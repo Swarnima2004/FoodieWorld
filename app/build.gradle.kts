@@ -54,5 +54,7 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation ("com.intuit.ssp:ssp-android:1.1.0")
     implementation ("com.intuit.sdp:sdp-android:1.1.0")
+    implementation ("com.github.denzcoskun:ImageSlideshow:0.1.2")
+    implementation ("androidx.recyclerview:recyclerview:1.1.0")
 
 }
