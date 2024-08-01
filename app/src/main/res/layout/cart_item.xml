@@ -27,7 +27,7 @@
                 android:id="@+id/cartImage"
                 android:layout_width="@dimen/_62sdp"
                 android:layout_height="@dimen/_62sdp"
-                android:layout_marginStart="9dp"
+                android:layout_marginStart="8dp"
                 android:padding="@dimen/_2sdp"
                 android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"

@@ -1,5 +1,6 @@
 package com.example.foodieworld.Adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,6 +9,7 @@ import com.example.foodieworld.databinding.CartItemBinding
 class CartAdapter(private val cartItems:MutableList<String>,private val cartItemPrice:MutableList<String> , private val CartImage:MutableList<Int>) : RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
 
     private val itemQuantities = IntArray(cartItems.size){1}
+    @SuppressLint("SuspiciousIndentation")
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartViewHolder {
       val binding = CartItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return CartViewHolder(binding)

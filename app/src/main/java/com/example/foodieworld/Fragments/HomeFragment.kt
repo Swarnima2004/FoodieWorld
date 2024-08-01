@@ -29,6 +29,10 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
+        binding.Viewbtn.setOnClickListener {
+            val bottomSheetDialog = bottom_sheet()
+            bottomSheetDialog.show(parentFragmentManager,"test")
+        }
         return binding.root
 
 
