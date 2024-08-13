@@ -12,7 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodieWorld"
         tools:targetApi="31">
-
+        <activity
+            android:name=".buyAndPay"
+            android:exported="false" />
         <activity
             android:name=".home_page"
             android:exported="true">
@@ -33,9 +35,7 @@
             android:exported="false" />
         <activity
             android:name=".splash"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".MainActivity"
             android:exported="true" />
