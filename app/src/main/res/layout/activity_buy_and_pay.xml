@@ -1,10 +1,233 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".buyAndPay">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <ImageButton
+            android:id="@+id/button5"
+            android:layout_width="@dimen/_32sdp"
+            android:layout_height="@dimen/_32sdp"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:src="@drawable/baseline_arrow_back_24"
+            android:background="@android:color/transparent" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit"
+            android:textSize="@dimen/_25ssp"
+            android:layout_gravity="center"
+            android:fontFamily="@font/yeon_sung"
+            android:textColor="@color/green"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:background="@drawable/profile_edit"
+            android:gravity="center_vertical"
+            android:elevation="@dimen/_2sdp"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:layout_width="@dimen/_65sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_weight="1"
+                android:textSize="@dimen/_13ssp"
+                android:fontFamily="@font/yeon_sung"
+                android:textColor="@color/black"
+                android:text="Name" />
+
+            <EditText
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:ems="10"
+                android:fontFamily="@font/lato"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:text="Admin" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:background="@drawable/profile_edit"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:elevation="@dimen/_2sdp">
+
+            <TextView
+
+                android:layout_width="@dimen/_65sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_weight="1"
+                android:text="Address"
+                android:fontFamily="@font/yeon_sung"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13ssp"/>
+
+            <EditText
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:ems="10"
+                android:inputType="textMultiLine"
+                android:layout_margin="@dimen/_5sdp"
+                android:fontFamily="@font/lato"
+                android:text="Lorem ipsum is placeholder text
+commonly used in the graphic,
+print, and publishing industries
+for previewing layouts and visual " />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:background="@drawable/profile_edit"
+            android:gravity="center_vertical"
+            android:elevation="@dimen/_2sdp"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:layout_width="@dimen/_65sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_weight="1"
+                android:textSize="@dimen/_13ssp"
+                android:fontFamily="@font/yeon_sung"
+                android:textColor="@color/black"
+                android:text="Phone" />
+
+            <EditText
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:ems="10"
+                android:fontFamily="@font/lato"
+                android:inputType="number"
+                android:minHeight="48dp"
+                android:text="3551521" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:background="@drawable/profile_edit"
+            android:gravity="center_vertical"
+            android:elevation="@dimen/_2sdp"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:layout_width="@dimen/_65sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_5sdp"
+
+                android:layout_weight="1"
+                android:fontFamily="@font/yeon_sung"
+               android:textSize="@dimen/_13ssp"
+                android:textColor="@color/black"
+                android:text="Payment Method" />
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="end"
+                app:srcCompat="@drawable/cash" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:background="@drawable/profile_edit"
+            android:gravity="center_vertical"
+            android:elevation="@dimen/_2sdp"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:layout_width="@dimen/_65sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_weight="1"
+                android:textSize="@dimen/_13ssp"
+                android:fontFamily="@font/yeon_sung"
+                android:textColor="@color/black"
+                android:text="Total Amount" />
+
+            <EditText
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:ems="10"
+                android:gravity="end|center_vertical"
+                android:paddingEnd="@dimen/_15sdp"
+                android:fontFamily="@font/lato"
+                android:textColor="@color/green"
+                android:inputType="none"
+                android:minHeight="48dp"
+                android:text="$5" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/placeorderbtn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_30sdp"
+        android:background="@drawable/profile_edit"
+        android:elevation="@dimen/_5sdp"
+        android:fontFamily="@font/yeon_sung"
+        android:text="Place My Order"
+        android:textAllCaps="false"
+        android:textColor="@color/green"
+        android:textSize="@dimen/_16ssp" />
+
+
+</FrameLayout>
