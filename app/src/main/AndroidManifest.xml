@@ -17,9 +17,11 @@
             android:exported="false" />
         <activity
             android:name=".buyAndPay"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
         <activity
             android:name=".home_page"
+            android:windowSoftInputMode="adjustPan"
             android:exported="true">
 
         </activity>
