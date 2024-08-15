@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".Fragments.SearchFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -12,8 +13,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="search"
-        android:textSize="@dimen/_16ssp"
+        android:text="Search"
+        android:textSize="@dimen/_20ssp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/yeon_sung"
         app:layout_constraintEnd_toEndOf="parent"
 
         app:layout_constraintStart_toStartOf="parent"
@@ -51,6 +54,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Menu"
+        android:textSize="@dimen/_16ssp"
+        android:fontFamily="@font/yeon_sung"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".Fragments.CartFragment">
 
 
@@ -12,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Cart"
+        android:text="Menu"
         android:fontFamily="@font/yeon_sung"
         android:textSize="@dimen/_25ssp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,15 +22,17 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/proceedbtn"
-        android:layout_width="@dimen/_230sdp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="@dimen/_10sdp"
         android:background="@drawable/proceedbtn"
+        android:fontFamily="@font/yeon_sung"
         android:text="Proceed"
         android:textAllCaps="false"
-        android:fontFamily="@font/yeon_sung"
         android:textColor="@color/green"
         android:textSize="@dimen/_15ssp"
-        android:layout_marginBottom="@dimen/_10sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -1,6 +1,9 @@
 package com.example.foodieworld
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.widget.ArrayAdapter
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -25,5 +28,12 @@ class location : AppCompatActivity() {
         val adapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,locations)
         val autoCompleteTextView  = binding.locationList
         autoCompleteTextView.setAdapter(adapter)
+
+        Handler(Looper.myLooper()!!).postDelayed(Runnable{
+            val intent=  Intent(this,home_page::class.java)
+            startActivity(intent)
+
+            finish()
+        },3000)
     }
 }
