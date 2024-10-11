@@ -65,6 +65,23 @@
                     app:layout_constraintTop_toBottomOf="@+id/buyFoodName"
                     app:layout_constraintVertical_bias="1.0" />
 
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/receviedBtn"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/btn_background"
+                    android:fontFamily="@font/yeon_sung"
+                    android:text="Recevied"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/cardView5"
+                    app:layout_constraintHorizontal_bias="0.543"
+                    app:layout_constraintStart_toStartOf="@+id/cardView5"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView5"
+                    app:layout_constraintVertical_bias="0.225" />
+
                 <TextView
                     android:id="@+id/buyFoodName"
                     android:layout_width="wrap_content"
@@ -79,15 +96,16 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="@dimen/_30sdp"
-                    android:layout_height="@dimen/_30sdp"
-                    android:layout_marginEnd="24dp"
+                    android:id="@+id/cardView5"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_marginEnd="36dp"
                     android:backgroundTint="@color/textcolor"
                     app:cardCornerRadius="@dimen/_20sdp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.4" />
+                    app:layout_constraintVertical_bias="0.188" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
