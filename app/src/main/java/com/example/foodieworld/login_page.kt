@@ -10,6 +10,8 @@ import com.example.foodieworld.databinding.ActivityLoginPageBinding
 import com.example.foodieworld.databinding.ActivitySignUpBinding
 
 class login_page : AppCompatActivity() {
+
+
     private val binding:ActivityLoginPageBinding by lazy{
         ActivityLoginPageBinding.inflate(layoutInflater)
     }
