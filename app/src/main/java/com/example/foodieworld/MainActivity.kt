@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         binding.nxtbtn.setOnClickListener{
             val intent = Intent(this,login_page::class.java)
             startActivity(intent)
-
+            finish()
         }
     }
 }
