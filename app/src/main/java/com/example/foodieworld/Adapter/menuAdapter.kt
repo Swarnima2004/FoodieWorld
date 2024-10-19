@@ -3,17 +3,23 @@ package com.example.foodieworld.Adapter
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.foodieworld.databinding.MenuItemBinding
 import com.example.foodieworld.foodDetails
+import com.example.foodieworld.model.menuItem
 
-class menuAdapter(private val menuItemName:MutableList<String>, private val menuItemPrice:MutableList<String>, private val menuItemImage:MutableList<Int>, private val requireContext : Context): RecyclerView.Adapter<menuAdapter.MenuViewHolder>() {
+class menuAdapter(
+    private val menuItems : List<menuItem>,
+    private val requireContext : Context)
+    : RecyclerView.Adapter<menuAdapter.MenuViewHolder>() {
 
-    private val itemClickListener: OnClickListener? = null
+
 
     @SuppressLint("SuspiciousIndentation")
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuViewHolder {
@@ -22,7 +28,7 @@ class menuAdapter(private val menuItemName:MutableList<String>, private val menu
     }
 
     override fun getItemCount(): Int {
-        return menuItemName.size
+        return menuItems.size
     }
 
     override fun onBindViewHolder(holder: MenuViewHolder, position: Int) {
@@ -35,22 +41,38 @@ class menuAdapter(private val menuItemName:MutableList<String>, private val menu
             binding.root.setOnClickListener {
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
-                    itemClickListener?.onItemClick(position)
-
-                    //set on click to open the food details
-                    val intent = Intent(requireContext, foodDetails::class.java)
-                    intent.putExtra("menuItemName", menuItemName.get(position))
-                    intent.putExtra("menuItemImage", menuItemImage.get(position))
-                    requireContext.startActivity(intent)
+                    openDetailActivity(position)
                 }
+
             }
         }
+
+        private fun openDetailActivity(position: Int) {
+            val menuItem = menuItems[position]
+            //intent to open the detail activity and pass data
+             val intent = Intent(requireContext,foodDetails::class.java).apply {
+                 putExtra("MenuItemName",menuItem.foodName)
+                 putExtra("MenuItemImage",menuItem.foodImage)
+                 putExtra("MenuItemDescription",menuItem.foodDescription)
+                 putExtra("MenuItemIngredients",menuItem.foodIngredient)
+                 putExtra("MenuItemPrice",menuItem.foodPrice)
+             }
+
+            //start the detail activity
+            requireContext.startActivity(intent)
+
+
+        }
+
+        //data in recycler view item
 
         fun bind(position: Int) {
+            val menuItem = menuItems[position]
             binding.apply {
-                menuFood.text = menuItemName[position]
-                menuPrice.text = menuItemPrice[position]
-                menuImage.setImageResource(menuItemImage[position])
+                menuFood.text = menuItem.foodName
+                menuPrice.text = menuItem.foodPrice
+                val uri = Uri.parse(menuItem.foodImage)
+                Glide.with(requireContext).load(uri).into(menuImage)
 
 
             }
@@ -59,9 +81,5 @@ class menuAdapter(private val menuItemName:MutableList<String>, private val menu
 
     }
 
-    interface OnClickListener {
-        fun onItemClick(position: Int) {
 
-        }
-    }
 }
