@@ -2,12 +2,16 @@ package com.example.foodieworld
 
 import android.net.Uri
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
 import com.example.foodieworld.databinding.ActivityFoodDetailsBinding
+import com.example.foodieworld.model.CartItems
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 
 class foodDetails : AppCompatActivity() {
     private lateinit var binding : ActivityFoodDetailsBinding
@@ -16,6 +20,8 @@ class foodDetails : AppCompatActivity() {
     private var foodDescription : String?= null
     private var foodIngredients : String?= null
     private var foodPrice : String?= null
+    private lateinit var auth : FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -26,6 +32,10 @@ class foodDetails : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        // initialise auth
+        auth = FirebaseAuth.getInstance()
+
         foodName = intent.getStringExtra("MenuItemName")
         foodDescription = intent.getStringExtra("MenuItemDescription")
         foodIngredients = intent.getStringExtra("MenuItemIngredients")
@@ -41,6 +51,24 @@ class foodDetails : AppCompatActivity() {
         }
         binding.backimagebtn.setOnClickListener {
             finish()
+        }
+        binding.addtocartbtn.setOnClickListener {
+            addItemToCart()
+        }
+    }
+
+    private fun addItemToCart() {
+        val database = FirebaseDatabase.getInstance().reference
+        val userId =  auth.currentUser?.uid?:""
+
+        //create a cart item object
+        val cartItem = CartItems(foodName.toString(),foodPrice.toString(),foodDescription.toString(),foodImage.toString(),1)
+        //save data to cart items to firebase
+
+        database.child("user").child(userId).child("Cartitems").push().setValue(cartItem).addOnSuccessListener{
+            Toast.makeText(this, "This Item Added to the crt successfully😊😊", Toast.LENGTH_SHORT).show()
+        }.addOnFailureListener {
+            Toast.makeText(this, "Item not added", Toast.LENGTH_SHORT).show()
         }
     }
 }
