@@ -2,11 +2,8 @@ package com.example.foodieworld
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.foodieworld.Fragments.NotificationBottom
@@ -14,9 +11,9 @@ import com.example.foodieworld.databinding.ActivityHomePageBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class home_page : AppCompatActivity() {
-   private val binding: ActivityHomePageBinding by lazy{
-       ActivityHomePageBinding.inflate(layoutInflater)
-   }
+    private val binding: ActivityHomePageBinding by lazy {
+        ActivityHomePageBinding.inflate(layoutInflater)
+    }
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,7 +33,7 @@ class home_page : AppCompatActivity() {
 
         binding.imageView3.setOnClickListener {
             val bottomSheetNotification = NotificationBottom()
-            bottomSheetNotification.show(supportFragmentManager,"test")
+            bottomSheetNotification.show(supportFragmentManager, "test")
         }
     }
 }
