@@ -60,6 +60,7 @@
 
             <EditText
 
+                android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -94,14 +95,15 @@
 
             <EditText
 
+                android:id="@+id/address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5sdp"
                 android:layout_weight="1"
                 android:background="@null"
                 android:ems="10"
-                android:inputType="textMultiLine"
-                android:layout_margin="@dimen/_5sdp"
                 android:fontFamily="@font/lato"
+                android:inputType="textMultiLine"
                 android:text="Lorem ipsum is placeholder text
 commonly used in the graphic,
 print, and publishing industries
@@ -131,6 +133,7 @@ for previewing layouts and visual " />
 
             <EditText
 
+                android:id="@+id/phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -207,18 +210,19 @@ for previewing layouts and visual " />
 
             <EditText
 
+                android:id="@+id/price"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@null"
                 android:ems="10"
-                android:gravity="end|center_vertical"
-                android:paddingEnd="@dimen/_15sdp"
                 android:fontFamily="@font/lato"
-                android:textColor="@color/green"
+                android:gravity="end|center_vertical"
                 android:inputType="none"
                 android:minHeight="48dp"
-                android:text="$5" />
+                android:paddingEnd="@dimen/_15sdp"
+                android:text="$5"
+                android:textColor="@color/green" />
         </LinearLayout>
 
 

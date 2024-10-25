@@ -52,6 +52,13 @@ class CartAdapter(
     override fun getItemCount(): Int {
         return cartItems.size
     }
+    //get updated quantity
+    fun getUpdateditem(): MutableList<Int> {
+        val itemQuantity = mutableListOf<Int>()
+        itemQuantity.addAll(cartquantity)
+        return itemQuantity
+    }
+
 
     inner class CartViewHolder(private val binding: CartItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -111,25 +118,7 @@ class CartAdapter(
 
 
         private fun removeItem(position: Int, uniqueKey: String) {
-//            if (uniqueKey != null) {
-//                cartItemsReference.child(uniqueKey).removeValue().addOnSuccessListener {
-//                    cartItems.removeAt(position)
-//                    cartImages.removeAt(position)
-//                    cartDescription.removeAt(position)
-//                    cartquantity.removeAt(position)
-//                    cartItemPrice.removeAt(position)
-//                    cartIngredients.removeAt(position)
-//
-//                    Toast.makeText(context, "Item deleted successfully", Toast.LENGTH_SHORT).show()
-//                    //update itemQuantities
-//                    itemQuantities =
-//                        itemQuantities.filterIndexed { index, i -> index != position }.toIntArray()
-//                    notifyItemRemoved(position)
-//                    notifyItemRangeChanged(position, cartItems.size)
-//                }.addOnFailureListener {
-//                    Toast.makeText(context, "failed to delete", Toast.LENGTH_SHORT).show()
-//                }
-//            }
+
             if (position in cartItems.indices) {
                 cartItemsReference.child(uniqueKey).removeValue().addOnSuccessListener {
                     cartItems.removeAt(position)
