@@ -36,6 +36,7 @@
 
         <EditText
 
+            android:id="@+id/userName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -44,7 +45,7 @@
             android:fontFamily="@font/lato"
             android:inputType="text"
             android:minHeight="48dp"
-            android:text="Admin" />
+            />
     </LinearLayout>
 
     <LinearLayout
@@ -71,18 +72,16 @@
 
         <EditText
 
+            android:id="@+id/userAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp"
             android:layout_weight="1"
             android:background="@null"
             android:ems="10"
-            android:inputType="textMultiLine"
-            android:layout_margin="@dimen/_5sdp"
             android:fontFamily="@font/lato"
-            android:text="Lorem ipsum is placeholder text
-commonly used in the graphic,
-print, and publishing industries
-for previewing layouts and visual " />
+            android:inputType="textMultiLine"/>
+
     </LinearLayout>
 
     <LinearLayout
@@ -109,6 +108,7 @@ for previewing layouts and visual " />
 
         <EditText
 
+            android:id="@+id/userEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -117,7 +117,7 @@ for previewing layouts and visual " />
             android:fontFamily="@font/lato"
             android:inputType="textEmailAddress"
             android:minHeight="48dp"
-            android:text="Name@gmail.com" />
+            />
     </LinearLayout>
 
     <LinearLayout
@@ -145,6 +145,7 @@ for previewing layouts and visual " />
 
         <EditText
 
+            android:id="@+id/userPhone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -153,14 +154,14 @@ for previewing layouts and visual " />
             android:fontFamily="@font/lato"
             android:inputType="number"
             android:minHeight="48dp"
-            android:text="251462574" />
+            />
     </LinearLayout>
 
 
     </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button4"
+        android:id="@+id/saveInfoBtn"
         android:background="@drawable/profile_edit"
         android:elevation="@dimen/_5sdp"
         android:layout_marginBottom="@dimen/_30sdp"

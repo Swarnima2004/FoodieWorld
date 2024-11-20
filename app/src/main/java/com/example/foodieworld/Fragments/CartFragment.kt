@@ -111,19 +111,13 @@ class CartFragment : Fragment() {
     ) {
         if (isAdded && context != null) {
             val intent = Intent(requireContext(), buyAndPay::class.java)
-//            intent.putExtra("FoodItemName", foodName as Array<String>)
-//            intent.putExtra("FoodItemPrice", foodPrice as Array<String>)
-//            intent.putExtra("FoodItemImage", foodimage as Array<String>)
-//            intent.putExtra("FoodItemDescription", foodDescription as Array<String>)
-//            intent.putExtra("FoodItemIngredients", foodIngridents as Array<String>)
-//            intent.putExtra("FoodItemQualities", foodQuantities as Array<Int>)
+            intent.putExtra("FoodItemName", foodName as ArrayList<String>)
+            intent.putExtra("FoodItemPrice", foodPrice as ArrayList<String>)
+            intent.putExtra("FoodItemImage", foodimage as ArrayList<String>)
+            intent.putExtra("FoodItemDescription", foodDescription as ArrayList<String>)
+            intent.putExtra("FoodItemIngredients", foodIngridents as ArrayList<String>)
+            intent.putExtra("FoodItemQualities", foodQuantities as ArrayList<Int>)
 
-            intent.putExtra("FoodItemName", foodName.toTypedArray())
-            intent.putExtra("FoodItemPrice", foodPrice.toTypedArray())
-            intent.putExtra("FoodItemImage", foodimage.toTypedArray())
-            intent.putExtra("FoodItemDescription", foodDescription.toTypedArray())
-            intent.putExtra("FoodItemIngredients", foodIngridents.toTypedArray())
-            intent.putExtra("FoodItemQualities", foodQuantities.toTypedArray())
 
             startActivity(intent)
         }

@@ -60,7 +60,7 @@ class HomeFragment : Fragment() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for(foodSnapShots in snapshot.children){
                     val menuItem = foodSnapShots.getValue(menuItem::class.java)
-                     menuItem?.let{ menuItems.add(it)}
+                    menuItem?.let{ menuItems.add(it)}
                 }
                 //display random popular items
                 randomPopularItems()
@@ -69,7 +69,7 @@ class HomeFragment : Fragment() {
 
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                Toast.makeText(context, "Unable to fetch data", Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -114,6 +114,5 @@ class HomeFragment : Fragment() {
 
     }
 }
-
 
 

@@ -66,7 +66,7 @@ class foodDetails : AppCompatActivity() {
         //save data to cart items to firebase
 
         database.child("user").child(userId).child("Cartitems").push().setValue(cartItem).addOnSuccessListener{
-            Toast.makeText(this, "This Item Added to the crt successfully😊😊", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "This Item Added to the cart successfully😊😊", Toast.LENGTH_SHORT).show()
         }.addOnFailureListener {
             Toast.makeText(this, "Item not added", Toast.LENGTH_SHORT).show()
         }
