@@ -92,15 +92,23 @@ class buyAndPay : AppCompatActivity() {
         userId = auth.currentUser?.uid?:""
         val time = System.currentTimeMillis()
         val itemPushKey = databaseRefrence.child("Order Details").push().key
-        val orderDetails = orderDetails(userId,Name,foodItemName,foodItemPrice,foodItemImage,foodItemQuantities,Address,Phone,time,itemPushKey,false,false)
+        val orderDetails = orderDetails(userId,Name,foodItemName,foodItemPrice,foodItemImage,foodItemQuantities,Address,Amount,Phone,time,itemPushKey,false,false)
          val orderReference = databaseRefrence.child("Order Details").child(itemPushKey!!)
         orderReference.setValue(orderDetails).addOnSuccessListener {
             val bottomSheetDialog = confirmBottomSheet()
-            bottomSheetDialog.show(supportFragmentManager,"test")
             removeItemFromCard()
-
+            addOrderToHistory(orderDetails)
         }
+            .addOnFailureListener {
+                Toast.makeText(this, "Failed To Order 😔", Toast.LENGTH_SHORT).show()
+            }
+    }
 
+    private fun addOrderToHistory(orderDetails: orderDetails) {
+         databaseRefrence.child("user").child(userId).child("BuyHistory").child(orderDetails.itemPushKey!!)
+             .setValue(orderDetails).addOnSuccessListener {
+
+         }
     }
 
     private fun removeItemFromCard() {

@@ -10,14 +10,14 @@ class orderDetails(): Parcelable {
     var foodName : MutableList<String>?= null
     var foodImages : MutableList<String>?= null
     var foodPrices : MutableList<String>?= null
-    var foodQuantities : MutableList<String> ?= null
+    var foodQuantities : MutableList<Int> ?= null
     var address : String?= null
     var totalPrice : String ?= null
     var phoneNumber : String ?= null
     var orderAccepted: Boolean = false
     var paymentReceived : Boolean = false
     var itemPushKey : String ?= null
-    var currentItem : Long = 0
+    var currentTime : Long = 0
 
     constructor(parcel: Parcel) : this() {
         userUid = parcel.readString()
@@ -28,7 +28,7 @@ class orderDetails(): Parcelable {
         orderAccepted = parcel.readByte() != 0.toByte()
         paymentReceived = parcel.readByte() != 0.toByte()
         itemPushKey = parcel.readString()
-        currentItem = parcel.readLong()
+        currentTime = parcel.readLong()
     }
 
     constructor(
@@ -39,12 +39,27 @@ class orderDetails(): Parcelable {
         foodItemImage: ArrayList<String>,
         foodItemQuantities: ArrayList<Int>,
         address: String,
+        totalAmount: String,
         phone: String,
         time: Long,
         itemPushKey: String?,
         b: Boolean,
         b1: Boolean
-    ) : this()
+    ) : this(){
+        this.userUid = userId
+        this.userName = name
+        this.foodName = foodItemName
+        this.foodPrices = foodItemPrice
+        this.foodImages = foodItemImage
+        this.foodQuantities = foodItemQuantities
+        this.address = address
+        this.totalPrice = totalAmount
+        this.phoneNumber = phone
+        this.currentTime = time
+        this.itemPushKey = itemPushKey
+        this.orderAccepted = orderAccepted
+        this.paymentReceived = paymentReceived
+    }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(userUid)
@@ -55,7 +70,7 @@ class orderDetails(): Parcelable {
         parcel.writeByte(if (orderAccepted) 1 else 0)
         parcel.writeByte(if (paymentReceived) 1 else 0)
         parcel.writeString(itemPushKey)
-        parcel.writeLong(currentItem)
+        parcel.writeLong(currentTime)
     }
 
     override fun describeContents(): Int {
