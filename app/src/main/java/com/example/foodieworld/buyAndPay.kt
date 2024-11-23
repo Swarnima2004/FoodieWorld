@@ -96,6 +96,7 @@ class buyAndPay : AppCompatActivity() {
          val orderReference = databaseRefrence.child("Order Details").child(itemPushKey!!)
         orderReference.setValue(orderDetails).addOnSuccessListener {
             val bottomSheetDialog = confirmBottomSheet()
+            bottomSheetDialog.show(supportFragmentManager,"Test")
             removeItemFromCard()
             addOrderToHistory(orderDetails)
         }
