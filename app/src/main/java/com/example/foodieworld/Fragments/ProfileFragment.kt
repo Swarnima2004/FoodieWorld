@@ -1,12 +1,11 @@
 package com.example.foodieworld.Fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.example.foodieworld.R
+import androidx.fragment.app.Fragment
 import com.example.foodieworld.databinding.FragmentProfileBinding
 import com.example.foodieworld.model.userModel
 import com.google.firebase.auth.FirebaseAuth
@@ -17,7 +16,7 @@ import com.google.firebase.database.ValueEventListener
 
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
-      private val auth = FirebaseAuth.getInstance()
+    private val auth = FirebaseAuth.getInstance()
     private val database = FirebaseDatabase.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,16 +28,30 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentProfileBinding.inflate(inflater,container,false)
+        binding = FragmentProfileBinding.inflate(inflater, container, false)
 
         setUserData()
-        binding.saveInfoBtn.setOnClickListener {
-            val name =binding.userName.text.toString()
-            val email =binding.userEmail.text.toString()
-            val address =binding.userAddress.text.toString()
-            val phone =binding.userPhone.text.toString()
+        binding.apply {
+            userName.isEnabled = false
+            userEmail.isEnabled = false
+            userPhone.isEnabled = false
+            userAddress.isEnabled = false
 
-            updateUserData(name,email,address,phone)
+            binding.editTextBtn.setOnClickListener {
+
+                userName.isEnabled =! userName.isEnabled
+                userEmail.isEnabled =! userEmail.isEnabled
+                userAddress.isEnabled =! userAddress.isEnabled
+                userPhone.isEnabled =! userPhone.isEnabled
+            }
+        }
+        binding.saveInfoBtn.setOnClickListener {
+            val name = binding.userName.text.toString()
+            val email = binding.userEmail.text.toString()
+            val address = binding.userAddress.text.toString()
+            val phone = binding.userPhone.text.toString()
+
+            updateUserData(name, email, address, phone)
 
         }
         return binding.root
@@ -46,8 +59,8 @@ class ProfileFragment : Fragment() {
     }
 
     private fun updateUserData(name: String, email: String, address: String, phone: String) {
-          val userId = auth.currentUser?.uid
-        if(userId != null){
+        val userId = auth.currentUser?.uid
+        if (userId != null) {
             val userReference = database.getReference("user").child(userId)
             val userData = hashMapOf(
                 "name" to name,
@@ -56,23 +69,28 @@ class ProfileFragment : Fragment() {
                 "phone" to phone
             )
             userReference.setValue(userData).addOnSuccessListener {
-                Toast.makeText(requireContext(), "Profile updated Successfully😊😊", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    "Profile updated Successfully😊😊",
+                    Toast.LENGTH_SHORT
+                ).show()
             }.addOnFailureListener {
-                Toast.makeText(requireContext(), "Profile failed to update😔😔", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Profile failed to update😔😔", Toast.LENGTH_SHORT)
+                    .show()
             }
         }
     }
 
     private fun setUserData() {
         val userId = auth.currentUser?.uid
-        if(userId != null){
+        if (userId != null) {
             val userReference = database.getReference("user").child(userId)
 
-            userReference.addListenerForSingleValueEvent(object :ValueEventListener{
+            userReference.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    if(snapshot.exists()){
+                    if (snapshot.exists()) {
                         val userProfile = snapshot.getValue(userModel::class.java)
-                        if(userProfile != null){
+                        if (userProfile != null) {
                             binding.userName.setText(userProfile.name)
                             binding.userAddress.setText(userProfile.address)
                             binding.userEmail.setText(userProfile.email)
