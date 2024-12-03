@@ -1,6 +1,7 @@
 package com.example.foodieworld.Fragments
 
 import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -51,8 +52,16 @@ class HistoryFragment : Fragment() {
          binding.recentBuy.setOnClickListener {
              seeItemsRecentBuy()
          }
-
+        binding.receviedBtn.setOnClickListener {
+            updateOrderStatus()
+        }
         return binding.root
+    }
+
+    private fun updateOrderStatus() {
+       val ItemKey = listOfOrderedFood[0].itemPushKey
+        val completeOrderReference = database.reference.child("CompletedOrder").child(ItemKey!!)
+        completeOrderReference.child("paymentReceived").setValue(true)
     }
 
     private fun seeItemsRecentBuy() {
@@ -64,7 +73,7 @@ class HistoryFragment : Fragment() {
     }
 
     private fun retrieveOrderHistory() {
-        binding.recentBuy.visibility = View.INVISIBLE
+        binding.receviedBtn.visibility = View.INVISIBLE
         userId = auth.currentUser?.uid ?: ""
         val buyItemReference: DatabaseReference =
             database.reference.child("user").child(userId).child("BuyHistory")
@@ -97,7 +106,7 @@ class HistoryFragment : Fragment() {
     }
 
     private fun setDataInRecentBuyItem() {
-        binding.recentBuy.visibility = View.VISIBLE
+
         val recentOrderItem = listOfOrderedFood.firstOrNull()
         recentOrderItem?.let {
             with(binding){
@@ -107,9 +116,10 @@ class HistoryFragment : Fragment() {
                 val uri = Uri.parse(image)
                 Glide.with(requireContext()).load(uri).into(buyAgainImage)
 
-                listOfOrderedFood.reverse()
-                if(listOfOrderedFood.isNotEmpty()){
-
+              val IsOrderAccept = listOfOrderedFood[0].orderAccepted
+                if(IsOrderAccept){
+                    orderStatus.background.setTint(Color.GREEN)
+                    receviedBtn.visibility = View.VISIBLE
                 }
             }
         }
@@ -133,7 +143,7 @@ class HistoryFragment : Fragment() {
         }
         val rv = binding.RecyclerViewBuyAgain
         rv.layoutManager = LinearLayoutManager(requireContext())
-        val buyAgainAdapter = BuyAgainAdapter(buyAgainFoodName,buyAgainItemPrice,buyAgainImages,requireContext())
+         buyAgainAdapter = BuyAgainAdapter(buyAgainFoodName,buyAgainItemPrice,buyAgainImages,requireContext())
         rv.adapter = buyAgainAdapter
 
     }
